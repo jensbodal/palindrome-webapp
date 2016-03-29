@@ -1,6 +1,6 @@
 # Simple web app to determine if a word is a palindrome
 
-Can be viewed here: [jensbodal.com:4000](jensbodal.com:4000)
+Can be viewed here: [jensbodal.com:4000](http://jensbodal.com:4000)
 
 ## Example link
 
