@@ -6,16 +6,12 @@ router.get('/', function(req, res, next) {
   var query = req.query;
   var word = query.word;
   var context = {};
-  if (word == undefined || word == null || word.length == "") {
-    console.log(word == undefined);
-    console.log(word == null);
+  context.word = word;
+  if (word.length == "") {
     context.error = "Invalid word length";
   }
-  else if (isPalindrome(word)) {
-    context.result = "yes";
-  }
   else {
-    context.result  = "no"; 
+    context.result  = isPalindrome(word);
   }
   res.render('index', context);
 });
@@ -27,12 +23,9 @@ function isPalindrome(word) {
   while (!done) {
     while (!isValidCharacter(word[leftCursor]) && leftCursor < rightCursor) {
       leftCursor++;
-      console.log('left: ' + leftCursor);
-      console.log('right: ' + rightCursor);
     }
     while (!isValidCharacter(word[rightCursor]) && rightCursor > leftCursor) {
       rightCursor--;
-      console.log('right: ' + rightCursor);
     }
     if (word[leftCursor].toLowerCase() != word[rightCursor].toLowerCase()) {
       return false;
@@ -51,10 +44,8 @@ function isPalindrome(word) {
 };
 
 function isValidCharacter(character) {
-  console.log("ERROR");
   var value = character.match(/[A-Za-z]/);
   if (value != null) {
-    console.log(character);
     return value.length >= 1;
   }
   return false;

@@ -1,8 +1,14 @@
 extends layout
 
 block content
-  if !error
-    h1= result
-    p Welcome to #{title}
-  else 
-    h1= error
+  div(id='dCenter')
+    h1 Check if your word is a palindrome!
+    form(action="/", method="get")
+      input(type="text", name="word")
+      button(type="button") TEST
+
+    if !error
+      - var resText = (result ? '': 'not')
+      h1 "#{word}" is #{resText} a palindrome
+    else 
+      h1= error
