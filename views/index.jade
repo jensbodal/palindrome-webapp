@@ -5,7 +5,7 @@ block content
     h1 Check if your word is a palindrome!
     form(action="/", method="get")
       input(type="text", name="word")
-      button(type="submit") TEST
+      button(type="submit") CHECK
 
     if (!error && word)
       - var resText = (result ? '': 'not')
