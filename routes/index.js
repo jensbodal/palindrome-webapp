@@ -7,11 +7,13 @@ router.get('/', function(req, res, next) {
   var word = query.word;
   var context = {};
   context.word = word;
-  if (word.length == "") {
-    context.error = "Invalid word length";
-  }
-  else {
-    context.result  = isPalindrome(word);
+  if (word != undefined && word != null) {
+    if (word.length == "") {
+      context.error = "Invalid word length";
+    }
+    else {
+      context.result  = isPalindrome(word);
+    }
   }
   res.render('index', context);
 });
