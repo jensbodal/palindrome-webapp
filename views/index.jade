@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  if !error
+    h1= result
+    p Welcome to #{title}
+  else 
+    h1= error
