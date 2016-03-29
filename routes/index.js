@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   var context = {};
   context.word = word;
   if (word != undefined && word != null) {
-    if (word.length == "") {
+    if (word.length == "" || hasNoCharacters(word)) {
       context.error = "Invalid word length";
     }
     else {
@@ -51,6 +51,15 @@ function isValidCharacter(character) {
     return value.length >= 1;
   }
   return false;
+};
+
+function hasNoCharacters(string) {
+  for (var i = 0; i < string.length; i++) {
+    if (isValidCharacter(string[i])) {
+      return false;
+    }
+  }
+  return true;
 };
 
 module.exports = router;
